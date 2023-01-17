@@ -41,10 +41,18 @@ window.addEventListener("load", function(event){
         event.preventDefault();
 
         const fruits = document.querySelectorAll("input[name=groceries]:checked");
-        console.log(fruits.toString());
+        let fruitsArr = [];
+        fruits.forEach((element) => {
+            fruitsArr.push(element.value);
+        })
+        let fruitsArrSorted = fruitsArr.sort();
+        console.log(fruitsArrSorted);
+
         let fruitEl = document.createElement("fruits");
-        fruits.forEach(function(stuff) {
-            fruitEl.append(stuff.value);
+        fruitsArrSorted.forEach(function(stuff) {
+            console.log(stuff)
+            fruitEl.append(stuff.toUpperCase());
+            fruitEl.append(document.createElement('br'));
             
         });
         document.body.append(fruitEl);
