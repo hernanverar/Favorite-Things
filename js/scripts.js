@@ -1,6 +1,7 @@
 window.addEventListener("load", function(event){
     let checkBoxForm = document.querySelector("#checkboxes");
     let formEl = document.querySelector("#form");
+    let box1Form = document.querySelector("#box1");
     formEl.addEventListener("submit", function(e) {
         e.preventDefault();
         if (document.querySelector("ul")) {
@@ -21,6 +22,11 @@ window.addEventListener("load", function(event){
     })
     checkBoxForm.addEventListener("submit", function(e){
         e.preventDefault();
+
+        const heading = document.createElement("h2");
+            heading.append("Here are the results.");
+            document.body.append(heading);
+
         let collectArray = document.querySelectorAll("input[name=stufftoputcatson]:checked");
         console.log(collectArray);
         let theDiv = document.createElement("div");
@@ -28,6 +34,19 @@ window.addEventListener("load", function(event){
             theDiv.append(stuff.value);
             theDiv.append(" and ");
         })        
-        checkBoxForm.after(theDiv);
+        heading.after(theDiv);
     })
+
+    box1Form.addEventListener("submit", function(event){ 
+        event.preventDefault();
+
+        const fruits = document.querySelectorAll("input[name=groceries]:checked");
+        console.log(fruits.toString());
+        let fruitEl = document.createElement("fruits");
+        fruits.forEach(function(stuff) {
+            fruitEl.append(stuff.value);
+            
+        });
+        document.body.append(fruitEl);
+    });
 }) 
