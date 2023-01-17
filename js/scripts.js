@@ -1,5 +1,5 @@
 window.addEventListener("load", function(event){
-
+    let checkBoxForm = document.querySelector("#checkboxes");
     let formEl = document.querySelector("#form");
     formEl.addEventListener("submit", function(e) {
         e.preventDefault();
@@ -18,5 +18,16 @@ window.addEventListener("load", function(event){
                 })
             formEl.after(ulArray);
         console.log(favThingsArr);
+    })
+    checkBoxForm.addEventListener("submit", function(e){
+        e.preventDefault();
+        let collectArray = document.querySelectorAll("input[name=stufftoputcatson]:checked");
+        console.log(collectArray);
+        let theDiv = document.createElement("div");
+        collectArray.forEach(function(stuff) {
+            theDiv.append(stuff.value);
+            theDiv.append(" and ");
+        })        
+        checkBoxForm.after(theDiv);
     })
 }) 
